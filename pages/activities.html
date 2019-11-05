@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/jquery.mobile-1.4.5.min.css">
+    <title>SadMolish</title>
+
+    <style type="text/css">
+      body {
+        background-image: url("../img/bg.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+      .btn-secondary {
+        width: 200px;l
+        margin-bottom: 10px;
+      }
+      .btn-info {
+        margin-bottom: 10px;
+        width: 200px;
+      }
+
+      ul,li{
+        list-style-type: none;
+        list-style-position:inside;
+        margin:0;
+        padding:0;
+      }
+
+      #exercise, #reachout, #hobby, #meditation, #helping, #gratitude, #socialize, #chores, #history, #timerdisplay, #customActivity, #mood, #stopTimerButton{
+        display: none;
+      }
+
+      table,tr,td{
+        border: 1px solid black;
+        padding: 5px;
+      }
+
+    </style>
+  </head>
+  <body onload="onLoad()">
+
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <button class = "btn btn-outline-primary" onclick="bakkuBotan()"><</button>
+      Activities
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></td></tr>
+          <li class="nav-item"><a href="#about" class="nav-link">Setting</a></td></tr>
+        </ul>
+      </div>
+    </nav>
+
+    <br><br>
+
+    <!--Actual content-->
+
+    <div class="container">
+
+      <div class="container-fluid" id ="activitymenu">
+        <div class="row padding text-center">
+          <div class="col-sm-12 mx-auto">
+            <button type="button" class="btn btn-secondary" onclick="randomAct()">Random</button>
+          </div>
+          <div class="col-sm-12 mx-auto" style="margin-top:10px;">
+            <button type="button" class="btn btn-secondary" onclick="pejiKawatta(9)">History</button>
+          </div>
+          <div class="col-sm-12 mx-auto" style="margin-top:10px;">
+            <button type="button" class="btn btn-secondary" onclick="pejiKawatta(10)">Custom Activity</button>
+          </div>
+        </div>
+        <hr>
+        <div class="row padding text-center">
+          <div class="col-sm-12 mx-auto">
+            <ul>
+              <li><button class="btn btn-info" onclick="pejiKawatta(1)">Exercise</button></li>
+              <li><button class="btn btn-info" onclick="pejiKawatta(2)">Reach out</button></li>
+              <li><button class="btn btn-info" onclick="pejiKawatta(3)">Hobby</button></li>
+              <li><button class="btn btn-info" onclick="pejiKawatta(4)">Mindful meditation</button></li>
+              <li><button class="btn btn-info" onclick="pejiKawatta(5)">Help others</button></li>
+              <li><button class="btn btn-info" onclick="pejiKawatta(6)">Practice gratitude</button></li>
+              <li><button class="btn btn-info" onclick="pejiKawatta(7)">Socialize</button></li>
+              <li><button class="btn btn-info" onclick="pejiKawatta(8)">Chores</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid" id="history">
+        <div class="row padding text-center">
+          <div class="col-sm-12 mx-auto">
+            <button class="btn btn-info" type="button" name="clearhistory" onclick="clearHistory()">Clear History</button>
+          </div>
+        </div>
+        <div class="row padding text-center">
+          <div class="col-sm-12 mx-auto">
+            <table id="tablerecord" style ="width:100%;">
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid" id="exercise">
+        <div class="row padding text-center">
+          <div class="col-sm-12 mx-auto">
+            <p class="text-justify">Excercising is one of the most effective ways to get your mind off things as you could center your focus at the task at hand.</p>
+            <p class="text-justify">Reseach had found that exercising releases adrenaline, a hormone that keeps one's body active and leads to a positive mind.</p>
+            <p class="text-justify">Go out and jog around, do small number of push-ups or squats. It is never about the intensity, it is only about doing it. Just do it!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid" id="reachout">
+        <div class="row padding text-center">
+          <div class="col-sm-12 mx-auto">
+            <p class="text-justify">Humans are inherently socialising creatures. It is a neccessity for one to communicate.</p>
+            <p class="text-justify">Reaching out and having a conversation with anyone could provide relief and assurance to yourself.</p>
+            <p class="text-justify">So go on ahead and reach out to others, there is no need for deep conversation. Even small talks could bring a long way towards self-recovery whilst improving your relations with others.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid" id="hobby">
+        <div class="row padding text-center">
+          <div class="col-sm-12 mx-auto">
+            <p class="text-justify">There's nothing more fun than doing the things you love.</p>
+            <p class="text-justify">Endorphin is the hormone that released to make us feel happy, and doing your hobbies proved to give off of it quite a lot.</p>
+            <p class="text-justify">Go, do art or play music. Plant flowers or take a long walk. Hobbies aren't just a personal trait, it's your key to a better self.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid" id="meditation">
+        <div class="row padding text-center">
+          <div class="col-sm-12 mx-auto">
+            <p class="text-justify">A calm mind leads to inner peace. Meditation encourages peace and sound state of mind.</p>
+            <p class="text-justify">Take a breather, have a session of meditation for yourself.</p>
+            <p class="text-justify">Whether it's a motion meditation such as Tai Chi and Yoga, or a static meditation, the point is to have a time for yourself.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid" id="helping">
+        <div class="row padding text-center">
+          <div class="col-sm-12 mx-auto">
+            <p class="text-justify">Reaching out to help others is a noble act and many have overlooked this simple fact.</p>
+            <p class="text-justify">Going out to help a friend who needs a hand with their work or problems could take your mind off things and learn to care and appreciate your friendships.</p>
+            <p class="text-justify">Of course, it doesn't have to be an aquiantance. If you see a stranger in need of immediate help, no matter how small, lend a hand. It's good for the both of you.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid" id="gratitude">
+        <div class="row padding text-center">
+          <div class="col-sm-12 mx-auto">
+            <p class="text-justify">List out the things that you truly grateful for. A simple activity that doesn't require much movements as it is but a simple act of self-reflection.</p>
+            <p class="text-justify">Think of the people you've met in your life, the things you received and the things that you've lost. Look at the brighter side of all things, you'll be surprised with how blessed you are without you ever realising.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid" id="socialize">
+        <div class="row padding text-center">
+          <div class="col-sm-12 mx-auto">
+            <p class="text-justify">Humans are inherently social creatures. We live and survive by working together as a collective species. Simply by chatting up and having a nice conversation with fellow people can certainly put us into a better mood.</p>
+            <p class="text-justify">Get into a talking group and socialise. It can be either in real life setting or virtually online, preferrably the former. Who knows, you may make new friends of the same interests.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid" id="chores">
+        <div class="row padding text-center">
+          <div class="col-sm-12 mx-auto">
+            <p class="text-justify">Some people consider chores as hassles. Little do we know that doing chorse could give us a sense of completion and it would be a lie to say it ain't a satisfying feeling.</p>
+            <p class="text-justify">If there's trash, clean up and throw it out. If there are dirty dishes, wash it and organise the dishes. Simple chores could come a long way in improving your mood.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid" id="mood">
+        <div class="row padding text-center">
+          <div class="col-sm-6 mx-auto">
+            <p>Before activity</p>
+          </div>
+          <div class="col-sm-6 mx-auto">
+            <select id="beforeactivity" name="beforeactivity">
+              <option value = "Really Sad">Really Sad</option>
+              <option value = "Sad">Sad</option>
+              <option value = "Normal">Normal</option>
+              <option value = "Happy">Happy</option>
+              <option value = "Really Happy">Really Happy</option>
+            </select>
+          </div>
+        </div>
+        <div class="row padding text-center">
+          <div class="col-sm-6 mx-auto">
+            <p>After activity</p>
+          </div>
+          <div class="col-sm-6 mx-auto">
+            <select id="afteractivity" name="afteractivity">
+              <option value = "Really Sad">Really Sad</option>
+              <option value = "Sad">Sad</option>
+              <option value = "Normal">Normal</option>
+              <option value = "Happy">Happy</option>
+              <option value = "Really Happy">Really Happy</option>
+            </select>
+          </div>
+        </div>
+        <div class="row padding text-center">
+          <div class="col-sm-12 mx-auto">
+            <br>
+            <button id="recordAct" class="btn btn-primary" type="button" name="recordAct" onclick="recordAct()">SAVE</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid" id="timerdisplay">
+        <div class="row padding text-center">
+          <div class="col-sm-12 mx-auto">
+            <button id="startTimerButton" class="btn btn-primary" type="button" name="startTimer" onclick="startTimer()">BEGIN</button>
+            <button id="stopTimerButton" class="btn btn-primary" type="button" name="stopTimer" onclick="stopTimer()">STOP</button>
+          </div>
+          <div class="col-sm-12 mx-auto">
+              <span><p id="time">10:00</p></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid" id="customActivity">
+        <div class="row padding text-center">
+          <div class="col-sm-12 mx-auto">
+            <h5>Custom Activity</h5>
+          </div>
+        </div>
+        <div class="row padding text-center">
+          <div class="col-sm-12 mx-auto">
+            Activity Name: <input type="text" id="cActName">
+          </div>
+        </div>
+        <div class="row padding text-center">
+          <div class="col-sm-6 mx-auto">
+            <br>
+            <p>Before activity</p>
+          </div>
+          <div class="col-sm-6 mx-auto">
+            <select id="beforeactivity" name="beforeactivity">
+              <option value = "Really Sad">Really Sad</option>
+              <option value = "Sad">Sad</option>
+              <option value = "Normal">Normal</option>
+              <option value = "Happy">Happy</option>
+              <option value = "Really Happy">Really Happy</option>
+            </select>
+          </div>
+        </div>
+        <div class="row padding text-center">
+          <div class="col-sm-6 mx-auto">
+            <br>
+            <p>After activity</p>
+          </div>
+          <div class="col-sm-6 mx-auto">
+            <select id="afteractivity" name="afteractivity">
+              <option value = "Really Sad">Really Sad</option>
+              <option value = "Sad">Sad</option>
+              <option value = "Normal">Normal</option>
+              <option value = "Happy">Happy</option>
+              <option value = "Really Happy">Really Happy</option>
+            </select>
+          </div>
+        </div>
+        <div class="row padding text-center">
+          <div class="col-sm-12 mx-auto">
+            <br>
+            <button id="recordAct" class="btn btn-primary" type="button" name="recordAct" onclick="recorCustomdAct()">SAVE</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <script type="text/javascript">
+
+      //Global variables
+      //================
+      var activityname = ""; //activity container
+      var timer = 600; //timer
+      var min = 0; //minutes
+      var sec = 0; //seconds
+      var today; //today's date
+      var dd, mm, yy, dte; //date containers
+      var bfmood; //mood before activity
+      var afmood; //mood after activity
+
+
+      //On page load activities
+      function onLoad(){
+        today = new Date();
+        dd = today.getDate();
+        mm = today.getMonth() + 1;
+        yy = today.getFullYear();
+        dte = today.toDateString();
+
+        //Displaying diary pages
+        //======================
+        var storedValues = localStorage.getItem("activityrecord"); //Gets the stored table.
+        if (storedValues == null){ //If the table is empty or first time use.
+          storedValues = ""; //Display nothing
+        }
+        else{
+          var list = document.querySelector("#tablerecord"); //Select table with ID = tablerecord.
+          list.innerHTML += storedValues; //Add the content of the stored table into the selected table.
+        }
+      }
+
+      //Timer functions
+      //===============
+      function startTimer(){
+        $("#startTimerButton").hide();
+        $("#stopTimerButton").fadeIn("fast");
+        min = parseInt(timer/60);
+        sec = parseInt(timer%60);
+
+        if (timer < 1){
+          $("#startTimerButton").fadeIn("fast");
+          $("#stopTimerButton").hide();
+          window.alert("Time's up!");
+          timer = 600;
+          document.getElementById("time").innerHTML = "<b>Timer: </b>" + min.toString() +":"+ sec.toString();
+        }
+        else {
+          document.getElementById("time").innerHTML = "<b>Timer: </b>" + min.toString() +":"+ sec.toString();
+          timer--;
+          setTimeout(function(){
+            startTimer();
+          }, 1000);
+        }
+      }
+      function stopTimer(){
+        timer = 0;
+      }
+
+      //Random activity
+      //===============
+      function randomAct(){
+        var x = Math.floor(Math.random() * 8) + 1;
+        pejiKawatta(x);
+      }
+
+      //Back button
+      //===========
+      var peji = 0;
+      function bakkuBotan(){
+        if (peji == 0){
+          window.location.replace("../index.html");
+        }
+        else {
+          $("#activitymenu").fadeIn("fast");
+          $("#exercise").hide();
+          $("#reachout").hide();
+          $("#hobby").hide();
+          $("#meditation").hide();
+          $("#helping").hide();
+          $("#gratitude").hide();
+          $("#socialize").hide();
+          $("#chores").hide();
+          $("#timerdisplay").hide();
+          $("#mood").hide();
+          $("#history").hide();
+          $("#customActivity").hide();
+          peji = 0;
+          activityname = "";
+        }
+      }
+
+      function clearHistory(){
+        var r = confirm("Do you want to delete the records?");
+        if (r){
+          localStorage.removeItem("activityrecord");
+          window.location.replace("activities.html");
+        }
+        else if (!r){
+        }
+      }
+
+      //Changing pages
+      //==============
+      function pejiKawatta(x){
+        switch(x){
+          //Excercising
+          case 1:
+          $("#activitymenu").hide();
+          $("#exercise").fadeIn("fast");
+          $("#reachout").hide();
+          $("#hobby").hide();
+          $("#meditation").hide();
+          $("#helping").hide();
+          $("#gratitude").hide();
+          $("#socialize").hide();
+          $("#chores").hide();
+          //$("#timerdisplay").fadeIn("fast");
+          $("#mood").fadeIn("fast");
+          $("#customActivity").hide();
+          peji = 1;
+          activityname = "Excercising";
+          break;
+          //Reaching Out
+          case 2:
+          $("#activitymenu").hide();
+          $("#exercise").hide();
+          $("#reachout").fadeIn("fast");
+          $("#hobby").hide();
+          $("#meditation").hide();
+          $("#helping").hide();
+          $("#gratitude").hide();
+          $("#socialize").hide();
+          $("#chores").hide();
+          //$("#timerdisplay").fadeIn("fast");
+          $("#mood").fadeIn("fast");
+          $("#customActivity").hide();
+          peji = 2;
+          activityname = "Reach Out";
+          break;
+          //Hobby
+          case 3:
+          $("#activitymenu").hide();
+          $("#exercise").hide();
+          $("#reachout").hide();
+          $("#hobby").fadeIn("fast");
+          $("#meditation").hide();
+          $("#helping").hide();
+          $("#gratitude").hide();
+          $("#socialize").hide();
+          $("#chores").hide();
+          //$("#timerdisplay").fadeIn("fast");
+          $("#mood").fadeIn("fast");
+          $("#customActivity").hide();
+          peji = 3;
+          activityname = "Hobby";
+          break;
+          //Meditation
+          case 4:
+          $("#activitymenu").hide();
+          $("#exercise").hide();
+          $("#reachout").hide();
+          $("#hobby").hide();
+          $("#meditation").fadeIn("fast");
+          $("#helping").hide();
+          $("#gratitude").hide();
+          $("#socialize").hide();
+          $("#chores").hide();
+          //$("#timerdisplay").fadeIn("fast");
+          $("#mood").fadeIn("fast");
+          $("#customActivity").hide();
+          peji = 4;
+          activityname = "Mindful Meditation";
+          break;
+          //Helping
+          case 5:
+          $("#activitymenu").hide();
+          $("#exercise").hide();
+          $("#reachout").hide();
+          $("#hobby").hide();
+          $("#meditation").hide();
+          $("#helping").fadeIn("fast");
+          $("#gratitude").hide();
+          $("#socialize").hide();
+          $("#chores").hide();
+          //$("#timerdisplay").fadeIn("fast");
+          $("#mood").fadeIn("fast");
+          $("#customActivity").hide();
+          peji = 5;
+          activityname = "Help Others";
+          break;
+          //Gratitude
+          case 6:
+          $("#activitymenu").hide();
+          $("#exercise").hide();
+          $("#reachout").hide();
+          $("#hobby").hide();
+          $("#meditation").hide();
+          $("#helping").hide();
+          $("#gratitude").fadeIn("fast");
+          $("#socialize").hide();
+          $("#chores").hide();
+          //$("#timerdisplay").fadeIn("fast");
+          $("#mood").fadeIn("fast");
+          $("#customActivity").hide();
+          peji = 6;
+          activityname = "Practice Gratitude";
+          break;
+          //Socialize
+          case 7:
+          $("#activitymenu").hide();
+          $("#exercise").hide();
+          $("#reachout").hide();
+          $("#hobby").hide();
+          $("#meditation").hide();
+          $("#helping").hide();
+          $("#gratitude").hide();
+          $("#socialize").fadeIn("fast");
+          $("#chores").hide();
+          //$("#timerdisplay").fadeIn("fast");
+          $("#mood").fadeIn("fast");
+          $("#customActivity").hide();
+          peji = 7;
+          activityname = "Socialize";
+          break;
+          //Chores
+          case 8:
+          $("#activitymenu").hide();
+          $("#exercise").hide();
+          $("#reachout").hide();
+          $("#hobby").hide();
+          $("#meditation").hide();
+          $("#helping").hide();
+          $("#gratitude").hide();
+          $("#socialize").hide();
+          $("#chores").fadeIn("fast");
+          //$("#timerdisplay").fadeIn("fast");
+          $("#mood").fadeIn("fast");
+          $("#customActivity").hide();
+          peji = 8;
+          activityname = "Chores";
+          break;
+          //History
+          case 9:
+          $("#activitymenu").hide();
+          $("#exercise").hide();
+          $("#reachout").hide();
+          $("#hobby").hide();
+          $("#meditation").hide();
+          $("#helping").hide();
+          $("#gratitude").hide();
+          $("#socialize").hide();
+          $("#chores").hide();
+          //$("#timerdisplay").hide();
+          $("#history").fadeIn("fast");
+          $("#customActivity").hide();
+          peji = 9;
+          activityname = "Checking history";
+          break;
+          //Custom Activity
+          case 10:
+          $("#activitymenu").hide();
+          $("#exercise").hide();
+          $("#reachout").hide();
+          $("#hobby").hide();
+          $("#meditation").hide();
+          $("#helping").hide();
+          $("#gratitude").hide();
+          $("#socialize").hide();
+          $("#chores").hide();
+          //$("#timerdisplay").hide();
+          $("#history").hide();
+          $("#customActivity").fadeIn("fast");
+          peji = 10;
+          activityname = "Custom Activity";
+          break;
+          //Error catching
+          default:
+            console.log("Something wrong with the switch case or page assignment.");
+            window.location.replace("activities.html");
+            break;
+        }
+      }
+
+      //Record activity
+      //===============
+      function recordAct(){
+        var r = confirm("Done with your activity?"); //Ask if the user are done with their activity.
+        if (r){ //If they accept
+          //Recording to activity pages
+          //========================
+          var date = localStorage.getItem("today"); //Get today's date.
+          bfmood = $("#beforeactivity option:selected").text();
+          console.log("Before activity: "+bfmood);
+          afmood = $("#afteractivity option:selected").text();
+          console.log("After activity: "+afmood);
+          var kaku = "<tr><td>"+date+"</td><td ><b>Activity:</b> "+activityname+"<br><b>Before activity: </b>"+bfmood+"<br><b>After activity: </b>"+afmood+"</td></tr>";
+          $("#tablerecord").prepend(kaku); //Adding the new entry above previous entries in table with ID = tablerecord using prepend.
+          var m = document.querySelector("#tablerecord"); //Select the table with ID = tablerecord
+          window.localStorage.activityrecord = m.innerHTML; //Save the selected table into stored page table.
+          //recordAvg(); //Execute the average mood per month function.
+          bakkuBotan();
+          pejiKawatta(9); //Show the pages page.
+        }
+        else if (!r){ //If not accept, do nothing and close dialog.
+        }
+      }
+
+      //Record Custom Activity
+      //======================
+      function recorCustomdAct(){
+        var r = confirm("Done with your activity?"); //Ask if the user are done with their activity.
+        if (r){ //If they accept
+          //Recording to activity pages
+          //========================
+          var date = localStorage.getItem("today"); //Get today's date.
+          bfmood = $("#beforeactivity option:selected").text();
+          console.log("Before activity: "+bfmood);
+          afmood = $("#afteractivity option:selected").text();
+          console.log("After activity: "+afmood);
+          var activityname = $("#cActName").val();
+          var kaku = "<tr><td>"+date+"</td><td ><b>Activity:</b> "+activityname+"<br><b>Before activity: </b>"+bfmood+"<br><b>After activity: </b>"+afmood+"</td></tr>";
+          $("#tablerecord").prepend(kaku); //Adding the new entry above previous entries in table with ID = tablerecord using prepend.
+          var m = document.querySelector("#tablerecord"); //Select the table with ID = tablerecord
+          window.localStorage.activityrecord = m.innerHTML; //Save the selected table into stored page table.
+          //recordAvg(); //Execute the average mood per month function.
+          bakkuBotan();
+          pejiKawatta(9); //Show the pages page.
+        }
+        else if (!r){ //If not accept, do nothing and close dialog.
+        }
+      }
+
+
+    </script>
+
+    <!-- Optional JavaScript -->
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="../jquery-3.3.1.js"></script>
+    <script src="../popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+  </body>
+</html>

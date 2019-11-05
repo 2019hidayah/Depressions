@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+    <title>SadMolish</title>
+
+    <style type="text/css">
+
+      body {
+        background-image: url("img/bg.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+
+      /*.container, .container-fluid {
+        padding:10px;
+        border: 1px solid black;
+      }*/
+
+      #date {
+        font-size:15px;
+      }
+      .btn {
+        width: 150px;
+        margin-bottom:10px;
+      }
+
+      root {
+	     --background-color: #fff;
+	     --page-width: 70em;
+	     --primary-color: #151513;
+	     --font-color: #151513;
+	     --subtle-primary-color: #151513;
+	     --block-background-color: #f1f3f4;
+	     --menu-item-color: #000;
+	     --menu-item-hover-color: #000;
+	     --menu-item-alert-bg: #ffffff;
+	     --menu-item-alert-shadow: #dfe1e7;
+	     --alert-border-color: #dfe1e7;
+	     --tertiary-color:: #727680;
+      }
+
+      @media (prefers-color-scheme: light) {
+        :root {
+          --background-color: #fff;
+          --page-width: 70em;
+          --primary-color: #151513;
+          --font-color: #151513;
+          --subtle-primary-color: #151513;
+          --block-background-color: #f1f3f4;
+          --menu-item-color: #000;
+          --menu-item-hover-color: #000;
+          --menu-item-alert-bg: #ffffff;
+          --menu-item-alert-shadow: #dfe1e7;
+          --alert-border-color: #dfe1e7;
+          --tertiary-color:: #727680;
+        }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --background-color: #1e1e1e;
+          --primary-color: #157efb;
+          --font-color: #dedede;
+          --subtle-primary-color: #151513;
+          --block-background-color: #323232;
+          --menu-item-color: #dedede;
+          --menu-item-hover-color: #157efb;
+          --menu-item-alert-bg: #151513;
+          --menu-item-alert-shadow: #151513;
+          --alert-border-color: #000;
+          --tertiary-color:: #727680;
+        }
+      }
+
+    </style>
+  </head>
+  <body onload="onLoad()">
+
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <img src = "icon.png" style="width:50px;height:50px;">
+      <p>SadMolish</p>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link">Setting</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <br><br>
+    <!-- Actual content -->
+    <div class="container text-center">
+          <div class="row text-center padding">
+            <div class="col-xs-12 padding mx-auto">
+              <p id="date2"></p>
+              <!--<a class="btn btn-outline-primary" href="login.html">Login</a>-->
+            </div>
+          </div>
+          <div class="row padding">
+            <div class="col-l-6 mx-auto">
+              <a href="pages/test.html" class="btn"><img src = "img/testicon.png" class="img-fluid"><b>Test</b></a>
+            </div>
+            <div class="col-l-6 mx-auto">
+              <a href="pages/history.html" class="btn"><img src = "img/historyicon.png" class="img-fluid"><b>History</b></a>
+            </div>
+          </div>
+
+          <div class="row padding">
+            <div class="col-l-6 mx-auto">
+              <a href="pages/diary.html" class="btn"><img src = "img/diaryicon.png" class="img-fluid"><b>Diary</b></a>
+            </div>
+            <div class="col-l-6 mx-auto">
+              <a href="pages/activities.html" class="btn"><img src = "img/activityicon.png" class="img-fluid"><b>Activities</b></a>
+            </div>
+          </div>
+
+          <div class="row padding">
+            <div class="col-l-6 mx-auto">
+              <a href="pages/entertainment.html" class="btn"><img src = "img/entertainmenticon.png" class="img-fluid"><b>Entertainment</b></a>
+            </div>
+            <div class="col-l-6 mx-auto">
+              <a href="pages/about.html" class="btn"><img src = "img/abouticon.png" class="img-fluid"><b>About</b></a>
+            </div>
+          </div>
+    </div>
+
+    <!-- My script -->
+    <script type="text/javascript">
+
+      function onLoad(){
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1;
+        var yy = today.getFullYear();
+        var date = today.toDateString();
+        window.localStorage.today = date;
+        document.getElementById("date2").innerHTML = localStorage.getItem("today");
+      }
+
+      function turnDark(){
+
+      }
+
+    </script>
+    <!-- Optional JavaScript -->
+    <!--<script src="js/jquery.mobile-1.4.5.min.js"></script>-->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="jquery-3.3.1.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
